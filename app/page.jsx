@@ -55,10 +55,10 @@ export default function Page() {
 
   return <>
     <header className="nav">
-      <button className="brand" onClick={() => jump("top")} aria-label="返回首页"><Gem tone="gold" size="sm" />珠宝视觉美学</button>
+      <button className="brand" onClick={() => jump("top")} aria-label="返回首页"><Gem tone="gold" size="sm" />Jewelry AI Studio</button>
       <nav className={menuOpen ? "nav-links open" : "nav-links"} aria-label="课程章节">
         {chapters.map(c => <button key={c.id} onClick={() => jump(c.id)}>{c.title}</button>)}
-        <button onClick={() => jump("studio")}>单款诊断</button>
+        <button onClick={() => jump("studio")}>AI 工作台</button>
         <button className="nav-cta" onClick={() => jump("checklist")}>发布检查</button>
       </nav>
       <button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="打开导航">{menuOpen ? "×" : "☰"}</button>
@@ -67,13 +67,13 @@ export default function Page() {
     <main id="top">
       <section className="hero">
         <div className="hero-copy reveal">
-          <p className="eyebrow">FINE JEWELRY · STYLE · COLOR</p>
-          <h1>珠宝视觉美学</h1>
-          <p className="hero-sub">从看懂美，到用美卖货</p>
-          <p className="hero-lead">一套把珠宝、服装、色彩、人像与商业摄影连成完整路径的方法论。不是知识堆砌，而是可以判断、操作、复盘的视觉系统。</p>
+          <p className="eyebrow">JEWELRY · VISION · STRATEGY</p>
+          <h1>珠宝视觉 AI</h1>
+          <p className="hero-sub">先看懂产品，再生成可执行方案</p>
+          <p className="hero-lead">上传产品图与销售目标，AI 把可见事实、未知信息和用户资料分开，再生成画面诊断、创意方向、镜头清单与内容方案。</p>
           <div className="hero-actions">
             <button className="primary" onClick={() => jump("roadmap")}>开始学习</button>
-            <button className="text-btn" onClick={() => jump("studio")}>为一件珠宝做诊断</button>
+            <button className="text-btn" onClick={() => jump("studio")}>进入 AI 工作台</button>
             <button className="text-btn" onClick={() => jump("checklist")}>直接使用检查清单 →</button>
           </div>
         </div>
@@ -168,6 +168,6 @@ export default function Page() {
         </div>
       </section>
     </main>
-    <footer><Gem tone="gold" size="sm"/><p>珠宝视觉美学 · 课程型网站</p><button onClick={() => jump("top")}>回到顶部 ↑</button></footer>
+    <footer><Gem tone="gold" size="sm"/><p>Jewelry AI Studio · 珠宝视觉策略工作台</p><button onClick={() => jump("top")}>回到顶部 ↑</button></footer>
   </>;
 }
