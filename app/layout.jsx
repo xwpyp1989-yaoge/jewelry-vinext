@@ -1,8 +1,8 @@
 import "./styles.css";
 
 export const metadata = {
-  title: "珠宝视觉美学｜从看懂美到用美卖货",
-  description: "珠宝、服装、色彩、人像摄影与种草转化的实用方法论。"
+  title: "Jewelry AI Studio｜珠宝视觉策略工作台",
+  description: "上传珠宝产品图，生成事实卡、视觉诊断、创意方向、拍摄清单与内容方案。"
 };
 
 export default function RootLayout({ children }) {

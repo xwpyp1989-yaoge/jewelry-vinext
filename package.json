@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build && node scripts/copy-hosting.mjs",
-    "start": "vinext start"
+    "start": "vinext start",
+    "test": "node --test"
   },
   "dependencies": {
     "react": "^19.2.6",

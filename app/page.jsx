@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import DiagnosisStudio from "./DiagnosisStudio.jsx";
 
 const chapters = [
   { id: "see", no: "01", title: "看懂美", desc: "识别氛围、整体关系与画面权重", color: "plum" },
@@ -41,7 +42,7 @@ export default function Page() {
   const [checked, setChecked] = useState([]);
   const [scene, setScene] = useState(0);
   const progress = Math.round((checked.length / checks.length) * 100);
-  const progressText = useMemo(() => checked.length === checks.length ? "可以发布" : `还差 ${checks.length - checked.length} 项`, [checked]);
+  const progressText = useMemo(() => checked.length === checks.length ? "清单已勾选，请核对实物" : `还差 ${checks.length - checked.length} 项`, [checked]);
 
   useEffect(() => {
     const onScroll = () => document.documentElement.style.setProperty("--scroll", String(window.scrollY));
@@ -54,9 +55,10 @@ export default function Page() {
 
   return <>
     <header className="nav">
-      <button className="brand" onClick={() => jump("top")} aria-label="返回首页"><Gem tone="gold" size="sm" />珠宝视觉美学</button>
+      <button className="brand" onClick={() => jump("top")} aria-label="返回首页"><Gem tone="gold" size="sm" />Jewelry AI Studio</button>
       <nav className={menuOpen ? "nav-links open" : "nav-links"} aria-label="课程章节">
         {chapters.map(c => <button key={c.id} onClick={() => jump(c.id)}>{c.title}</button>)}
+        <button onClick={() => jump("studio")}>AI 工作台</button>
         <button className="nav-cta" onClick={() => jump("checklist")}>发布检查</button>
       </nav>
       <button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="打开导航">{menuOpen ? "×" : "☰"}</button>
@@ -65,12 +67,13 @@ export default function Page() {
     <main id="top">
       <section className="hero">
         <div className="hero-copy reveal">
-          <p className="eyebrow">FINE JEWELRY · STYLE · COLOR</p>
-          <h1>珠宝视觉美学</h1>
-          <p className="hero-sub">从看懂美，到用美卖货</p>
-          <p className="hero-lead">一套把珠宝、服装、色彩、人像与商业摄影连成完整路径的方法论。不是知识堆砌，而是可以判断、操作、复盘的视觉系统。</p>
+          <p className="eyebrow">JEWELRY · VISION · STRATEGY</p>
+          <h1>珠宝视觉 AI</h1>
+          <p className="hero-sub">先看懂产品，再生成可执行方案</p>
+          <p className="hero-lead">上传产品图与销售目标，AI 把可见事实、未知信息和用户资料分开，再生成画面诊断、创意方向、镜头清单与内容方案。</p>
           <div className="hero-actions">
             <button className="primary" onClick={() => jump("roadmap")}>开始学习</button>
+            <button className="text-btn" onClick={() => jump("studio")}>进入 AI 工作台</button>
             <button className="text-btn" onClick={() => jump("checklist")}>直接使用检查清单 →</button>
           </div>
         </div>
@@ -156,6 +159,7 @@ export default function Page() {
         </div>
       </section>
 
+      <DiagnosisStudio />
       <section id="checklist" className="checklist-section">
         <div className="section">
           <div className="check-head"><div><p className="eyebrow">发布前</p><h2>珠宝视觉与转化检查清单</h2><p>缩略图先过关，再放大看细节。点击每一项完成检查。</p></div><div className="progress"><span>{progress}%</span><div><i style={{width:`${progress}%`}}/></div><b>{progressText}</b></div></div>
@@ -164,6 +168,6 @@ export default function Page() {
         </div>
       </section>
     </main>
-    <footer><Gem tone="gold" size="sm"/><p>珠宝视觉美学 · 课程型网站</p><button onClick={() => jump("top")}>回到顶部 ↑</button></footer>
+    <footer><Gem tone="gold" size="sm"/><p>Jewelry AI Studio · 珠宝视觉策略工作台</p><button onClick={() => jump("top")}>回到顶部 ↑</button></footer>
   </>;
 }
